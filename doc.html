@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissão de Nota Fiscal de Serviço</title>
+</head>
+
+<body>
+    <h1>Emissão de Nota Fiscal de Serviço</h1>
+
+    <label for="cliente">Cliente:</label>
+    <input type="text" id="cliente" placeholder="Nome do cliente">
+
+    <label for="valorServico">Valor do Serviço:</label>
+    <input type="number" id="valorServico" placeholder="Valor em reais">
+
+    <button onclick="emitirNotaFiscal()">Emitir Nota Fiscal</button>
+
+    <hr>
+
+    <h2>Nota Fiscal Gerada:</h2>
+    <div id="notaFiscal"></div>
+
+    <script>
+        function emitirNotaFiscal() {
+            // Coleta de dados
+            const cliente = document.getElementById('cliente').value;
+            const valorServico = parseFloat(document.getElementById('valorServico').value);
+
+            // Cálculos fiscais (exemplo simples)
+            const imposto = valorServico * 0.1; // Imposto de 10%
+
+            // Geração da nota fiscal
+            const notaFiscal = `
+                <p><strong>Cliente:</strong> ${cliente}</p>
+                <p><strong>Valor do Serviço:</strong> R$ ${valorServico.toFixed(2)}</p>
+                <p><strong>Imposto:</strong> R$ ${imposto.toFixed(2)}</p>
+                <p><strong>Total:</strong> R$ ${(valorServico + imposto).toFixed(2)}</p>
+            `;
+
+            // Exibição na página
+            document.getElementById('notaFiscal').innerHTML = notaFiscal;
+        }
+    </script>
+
+</body>
+
+</html>
